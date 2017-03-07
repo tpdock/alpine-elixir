@@ -1,0 +1,16 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - if [ -z "$TRAVIS_TAG" ]; then exit 0; fi
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker build -t tpdock/alpine-elixir:latest elixir
+  - docker tag tpdock/alpine-elixir:latest     tpdock/alpine-elixir:$TRAVIS_TAG
+  - docker push tpdock/alpine-elixir:latest
+  - docker push tpdock/alpine-elixir:$TRAVIS_TAG
+  - docker build -t tpdock/alpine-elixir:latest-dev elixir-dev
+  - docker tag tpdock/alpine-elixir:latest-dev tpdock/alpine-elixir:$TRAVIS_TAG-dev
+  - docker push tpdock/alpine-elixir:latest-dev
+  - docker push tpdock/alpine-elixir:$TRAVIS_TAG-dev
