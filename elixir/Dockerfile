@@ -1,6 +1,6 @@
 FROM alpine:3.5
 
-ENV ELIXIR_VERSION=1.3.4
+ENV ELIXIR_VERSION=1.4.2
 ENV PATH=$PATH:/opt/elixir-${ELIXIR_VERSION}/bin
 
 RUN apk --update add erlang && \
