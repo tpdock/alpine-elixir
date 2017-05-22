@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:3.4
 
 ENV ELIXIR_VERSION=1.4.2
 ENV PATH=$PATH:/opt/elixir-${ELIXIR_VERSION}/bin
